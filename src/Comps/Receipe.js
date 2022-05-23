@@ -1,32 +1,15 @@
 import React from 'react'
+import ErrorBlock from './ErrorBlock'
+import StartSearchingBlock from './StartSearchingBlock'
 
-const Receipe = () => {
+const Receipe = ({searchInput, flag}) => {
   return (
     <>
     <div className="recipe">
-        <div className="message">
-            <div>
-            <svg>
-                <use href="src/img/icons.svg#icon-smile" />
-            </svg>
-            </div>
-            <p>Start by searching for a recipe or an ingredient. Have fun!</p>
-        </div>
-        <div className="spinner">
-            <svg>
-            <use href="src/img/icons.svg#icon-loader" />
-            </svg>
-        </div> 
-        <div className="error">
-            <div>
-            <svg>
-                <use href="src/img/icons.svg#icon-alert-triangle" />
-            </svg>
-            </div>
-            <p>No recipes found for your query. Please try again!</p>
-        </div> 
+    {flag == true ? <StartSearchingBlock /> : 
+        <ErrorBlock /> }
         <figure className="recipe__fig">
-            <img src="src/img/test-1.jpg" alt="Tomato" className="recipe__img" />
+            <img src="http://forkify-api.herokuapp.com/images/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg" alt="Tomato" className="recipe__img" />
             <h1 className="recipe__title">
             <span>Pasta with tomato cream sauce</span>
             </h1>
@@ -64,7 +47,7 @@ const Receipe = () => {
             </svg>
             </div>
             <button className="btn--round">
-            <svg className>
+            <svg>
                 <use href="src/img/icons.svg#icon-bookmark-fill" />
             </svg>
             </button>

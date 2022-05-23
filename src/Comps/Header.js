@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import logo from '../img/logo.png'
 
-const Header = (props) => {
+const Header = ({SearchString}) => {
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -13,7 +13,6 @@ const Header = (props) => {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = '#f00';
   }
 
@@ -32,39 +31,29 @@ const Header = (props) => {
     },
   };
 
-  const[searchInput, setSearchInput] = useState();
-
-  const handelSearch = (e) => {
+  const onSearch = (e)=> {
     setSearchInput(e.target.value)
     console.log("set State",searchInput);
-    GetData();
   }
-  
-  console.log("data", searchInput);
 
-  const API = `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchInput}&key=6f023f1f-818d-40d7-a0a0-f095148f22ae`;
-  
-  async function GetData(e) {
+  const[searchInput, setSearchInput] = useState();
+  const handelSearch = (e) => {
     e.preventDefault();
-    const res = await fetch(API);
-    const data = await res.json();
-    console.log(data);
-    props.ReceipeListing(data);
-  }  
-  
-  
-  
+    SearchString(searchInput);
+  }
+
+
   return (
    <>
       <header className="header">
       <img src={logo} alt="Logo" className="header__logo" />
-      <form className="search" onSubmit={GetData}>
-        <input type="text" className="search__field" value={searchInput} placeholder="Search over 1,000,000 recipes..." onChange={handelSearch} />
+      <form className="search" onSubmit={handelSearch}>
+        <input type="text" className="search__field" value={searchInput} placeholder="Search over 1,000,000 recipes..." onChange={onSearch} />
         <button className="btn search__btn">
           <svg className="search__icon">
             <use href="src/img/icons.svg#icon-search" />
           </svg>
-          <span onClick={GetData}>Search</span>
+          <span onClick={handelSearch}>Search</span>
         </button>
       </form>
       <nav className="nav">

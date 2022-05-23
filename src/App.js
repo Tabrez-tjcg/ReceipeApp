@@ -1,22 +1,35 @@
 import './App.css';
+import React, { useState } from 'react';
 import Header from './Comps/Header';
 import Receipe from './Comps/Receipe';
-import SerachResult from './Comps/SerachResult';
 import '../src/index.f7626f62.css'
 import AddReceipe from './Comps/AddReceipe';
 import Modal from 'react-modal/lib/components/Modal';
+import ResultSide from './Comps/ResultSide';
 
-const ReceipeListing = (recData) => {
-  const RecList = recData;
-}
 
-function App() {
+function App(props) {
+  const [searchInput, setSearchInput] = useState ('');
+  
+  const SearchString = (searchInp) => {
+    setSearchInput(searchInp);
+    console.log("APP Data :: ",searchInput);
+  }
+
+  // const Myflag = "";
+
+  // const getFlag = (fval) => {
+  //   Myflag = fval;
+  //   console.log("FVal::",fval)
+  // }
+  
+  
   return (
-   <div className="container">
-    <Header />
-    <SerachResult />
-    {/* <Receipe /> */}
-    <Receipe ReceipeListing={ReceipeListing}/>
+    <div className="container">
+    <Header SearchString={SearchString}/>
+    <ResultSide searchInput={searchInput} />
+    <Receipe searchInput={searchInput}/>
+    
     <div className="overlay hidden" />
 
     
