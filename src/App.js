@@ -12,25 +12,28 @@ import ResultSide from './Comps/ResultSide';
 function App(props) {
   const [searchInput, setSearchInput] = useState ('');
   const [flag, setFlag] = useState(false);
-  
+  const [dataLength, setDataLength] = useState(0);
   const SearchString = (searchInp) => {
     setSearchInput(searchInp);
     console.log("APP Data :: ",searchInput);
   }
 
-  // const Myflag = "";
+  const dtLen = (l) => {
+    setDataLength(l);
+  }
 
-  // const getFlag = (fval) => {
-  //   Myflag = fval;
-  //   console.log("FVal::",fval)
-  // }
   
   
   return (
     <div className="container">
     <Header SearchString={SearchString}/>
-    <ResultSide searchInput={searchInput} setFlag={setFlag}/>
-    <Receipe searchInput={searchInput} flag={flag}/>
+
+    <ResultSide 
+      searchInput={searchInput}
+      setFlag={setFlag}
+      dtLen={dtLen} />
+
+    <Receipe searchInput={searchInput} flag={flag} dataLength={dataLength} />
     
     <div className="overlay hidden" />
 

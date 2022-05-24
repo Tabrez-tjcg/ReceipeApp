@@ -1,21 +1,25 @@
 import React from 'react'
 
-const OtherCompsSearch = () => {
+const OtherCompsSearch = ({dtLen}) => {
   return (
     <div className="search-results">                     
         <div className="pagination">
-            <button className="btn--inline pagination__btn--prev">
+            {dtLen > 10 ? <button className="btn--inline pagination__btn--prev">
             <svg className="search__icon">
                 {/* <use href="src/img/icons.svg#icon-arrow-left" /> */}
             </svg>
             <span>Page 1</span>
             </button>
+            : null }
+
+            {dtLen > 0?       
             <button className="btn--inline pagination__btn--next">
             <span>Page 3</span>
             <svg className="search__icon">
                 {/* <use href="src/img/icons.svg#icon-arrow-right" /> */}
             </svg>
-            </button> 
+            </button>
+            : null }
         </div>
         <p className="copyright">
             © Copyright by

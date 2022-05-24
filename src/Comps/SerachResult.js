@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-const SerachResult = ({searchInput, setFlag}) => {
+const SerachResult = ({searchInput, dtLen}) => {
+
+    const [flag, setFlag] = useState(false);
     
     let RecData = [];
 
@@ -16,6 +18,8 @@ const SerachResult = ({searchInput, setFlag}) => {
         console.log("What is search :: ", searchInput);
 
         let data = [];
+
+        let dataLen = 0;
     
         const API = `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchInput}&key=6f023f1f-818d-40d7-a0a0-f095148f22ae`;
         
@@ -26,11 +30,16 @@ const SerachResult = ({searchInput, setFlag}) => {
             data = await res.json();
             RecData = await data.data.recipes;
             console.log("The Data::",RecData[2]);
+            dataLen = Object.keys(RecData).length;
+            console.log("Data len:",dataLen);
+            dtLen(dataLen);
             setFlag(true);
         }
         catch(e){
             console.log("Error Occured : ",e);
+            console.log("Data len:",dataLen);
             setFlag(false);
+            dtLen(dataLen);
         }
     }
 
