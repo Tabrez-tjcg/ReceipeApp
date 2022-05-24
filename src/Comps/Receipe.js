@@ -6,8 +6,11 @@ const Receipe = ({searchInput, flag}) => {
   return (
     <>
     <div className="recipe">
-    {flag == true ? <StartSearchingBlock /> : 
-        <ErrorBlock /> }
+    {/* {flag == true ? <StartSearchingBlock /> : 
+        <ErrorBlock /> } */}
+
+    {flag == true ? <ErrorBlock /> :
+        <div>
         <figure className="recipe__fig">
             <img src="http://forkify-api.herokuapp.com/images/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg" alt="Tomato" className="recipe__img" />
             <h1 className="recipe__title">
@@ -91,6 +94,8 @@ const Receipe = ({searchInput, flag}) => {
             </svg>
             </a>
         </div>
+        </div>
+    }
     </div>
 
     </>

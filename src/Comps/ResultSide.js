@@ -2,10 +2,10 @@ import React from 'react'
 import OtherCompsSearch from './OtherCompsSearch'
 import SerachResult from './SerachResult'
 
-const ResultSide = ({searchInput}) => {
+const ResultSide = ({searchInput, setFlag}) => {
   return (
     <>
-    <SerachResult searchInput={searchInput}  />  
+    <SerachResult searchInput={searchInput} setFlag={setFlag}  />  
     <OtherCompsSearch />
     </>
   );
