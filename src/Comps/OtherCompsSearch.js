@@ -2,7 +2,7 @@ import React from 'react'
 
 const OtherCompsSearch = ({dtLen}) => {
   return (
-    <div className="search-results">                     
+    <>
         <div className="pagination">
             {dtLen > 10 ? <button className="btn--inline pagination__btn--prev">
             <svg className="search__icon">
@@ -26,7 +26,7 @@ const OtherCompsSearch = ({dtLen}) => {
             <a className="twitter-link" href="https://twitter.com/jonasschmedtman">Jonas Schmedtmann</a>. Use for learning or your portfolio. Don't use to teach. Don't claim
             as your own.
         </p>
-        </div>
+    </>
   )
 }
 

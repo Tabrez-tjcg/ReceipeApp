@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "parcel": "parcel index.html",
+    "parcel": "parcel public/index.html",
     "parcel-build": "parcel build index.html",
     "dev": "concurrently \"npm start\" \"npm run parcel\""
   },

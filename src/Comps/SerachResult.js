@@ -3,25 +3,27 @@ import React, { useEffect, useState } from 'react'
 const SerachResult = ({searchInput, dtLen}) => {
 
     const [flag, setFlag] = useState(false);
+    const [recData, setRecData] = useState([]);
     
     let RecData = [];
 
   
     
-    // useEffect(() => {
-    //     getRecipe();
-    //     // getFlag(flag);
-    // }, [searchInput])
+    useEffect(() => {
+        getRecipe();
+        // getFlag(flag);
+    }, [searchInput])
 
     const getRecipe = () => {
 
         console.log("What is search :: ", searchInput);
 
         let data = [];
+        setRecData([{name: "abc"}, {"name": "xyz"}])
 
         let dataLen = 0;
     
-        const API = `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchInput}&key=6f023f1f-818d-40d7-a0a0-f095148f22ae`;
+        const API = `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchInput}&key=179fc4d4-e42b-40fa-ac04-e9a35dbe6925`;
         
         async function GetData(e) {
             try{
@@ -29,6 +31,7 @@ const SerachResult = ({searchInput, dtLen}) => {
             const res = await fetch(API);
             data = await res.json();
             RecData = await data.data.recipes;
+            setRecData(RecData)
             console.log("The Data::",RecData[2]);
             dataLen = Object.keys(RecData).length;
             console.log("Data len:",dataLen);
@@ -46,19 +49,31 @@ const SerachResult = ({searchInput, dtLen}) => {
     GetData();
 
 
-    return ( 
-        <>
+    // return ( 
+    //     <>
             
-                {RecData.map((recipeData, index) => (
-                    <>
-                    {/* {console.log("rcData :: "+recipeData)}
-                    {console.log("indVal :: "+recipeData.index)} */}
+    //     </>
+    //     )
 
-                <ul className="results" key={index}>
-                    <li className="preview">
+    
+    }
+
+
+    return (
+        <div className="search-results">   
+        <ul className="results">
+            {console.log("RecData :: "+recData)}
+            
+                {recData.lenght  != 0 && recData.map((recipeData, index) => (
+                    <>
+                    {/* {console.log("rcData :: "+recipeData)} */}
+                    {/* {console.log("indVal :: "+recipeData.index)} */}
+
+                
+                    <li className="preview" key={index}>
                     <a className="preview__link preview__link--active" href="#23456">
                         <figure className="preview__fig">
-                        {/* <img src={recipeData[index].img_url} alt="Test" /> */}
+                        <img src={recipeData.image_url} alt="Test" />
                         </figure>
                         <div className="preview__data">
                         <h4 className="preview__title">{recipeData.title}</h4>
@@ -71,21 +86,11 @@ const SerachResult = ({searchInput, dtLen}) => {
                         </div>
                     </a>
                     </li>
-                </ul>
                 </>)
 
                 )}
-        </>
-        )
-
-    
-    }
-
-
-    return (
-        <>
-            {getRecipe()}
-        </>
+        </ul>
+        </div>
 
     )
 

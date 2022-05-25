@@ -1,8 +1,7 @@
-import './App.css';
 import React, { useState } from 'react';
 import Header from './Comps/Header';
 import Receipe from './Comps/Receipe';
-import '../src/index.f7626f62.css'
+// import '../src/index.f7626f62.css'
 import '../src/index.f7626f62.css'
 import AddReceipe from './Comps/AddReceipe';
 import Modal from 'react-modal/lib/components/Modal';
