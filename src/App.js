@@ -25,10 +25,10 @@ function App(props) {
 
   const setReceipe = (setReceipe) => {
     setCurrentReceipe(setReceipe);
-    console.log("App index",currentReceipe);
+    console.log("Current Rec. in App:",currentReceipe);
   }
-  
-  
+
+
   return (
     <div className="container">
     <Header SearchString={SearchString}/>

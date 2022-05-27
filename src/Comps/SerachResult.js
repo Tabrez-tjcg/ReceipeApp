@@ -71,9 +71,7 @@ const SerachResult = ({searchInput, dtLen, setReceipe}) => {
                     {/* {console.log("rcData :: "+recipeData)} */}
                     {/* {console.log("indVal :: "+recipeData.index)} */}
 
-                    {index < 10 && 
-
-                
+                    {index < 10 &&
                     <li className="preview" key={index}>
                     <a className="preview__link preview__link--active" onClick={() => setReceipeIndex(recipeData.id)} href="#23456" >
                         <figure className="preview__fig">
@@ -90,7 +88,7 @@ const SerachResult = ({searchInput, dtLen, setReceipe}) => {
                         </div>
                     </a>
                     </li>
-                    }
+                }
                 </>)
 
                 )}
