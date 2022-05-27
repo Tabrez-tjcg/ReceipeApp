@@ -14,6 +14,8 @@ function App(props) {
   const [dataLength, setDataLength] = useState(0);
   const [currentReceipe, setCurrentReceipe] = useState('');
 
+  const [recordsPerPage, setRecordsPerPage] = useState();
+  
   const SearchString = (searchInp) => {
     setSearchInput(searchInp);
     console.log("APP Data :: ",searchInput);
@@ -28,7 +30,6 @@ function App(props) {
     console.log("Current Rec. in App:",currentReceipe);
   }
 
-
   return (
     <div className="container">
     <Header SearchString={SearchString}/>
@@ -37,7 +38,10 @@ function App(props) {
       searchInput={searchInput}
       setFlag={setFlag}
       dtLen={dtLen}
-      setReceipe={setReceipe} />
+      setReceipe={setReceipe} 
+     />
+
+    {console.log("Rec Per page",recordsPerPage)}
 
     <Receipe searchInput={searchInput} flag={flag} dataLength={dataLength} currentReceipe={currentReceipe} />
     
