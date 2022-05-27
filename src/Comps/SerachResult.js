@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const SerachResult = ({searchInput, dtLen}) => {
+const SerachResult = ({searchInput, dtLen, setReceipe}) => {
 
     const [flag, setFlag] = useState(false);
     const [recData, setRecData] = useState([]);
@@ -19,7 +19,7 @@ const SerachResult = ({searchInput, dtLen}) => {
         console.log("What is search :: ", searchInput);
 
         let data = [];
-        setRecData([{name: "abc"}, {"name": "xyz"}])
+        // setRecData([{name: "abc"}, {"name": "xyz"}])
 
         let dataLen = 0;
     
@@ -54,24 +54,28 @@ const SerachResult = ({searchInput, dtLen}) => {
             
     //     </>
     //     )
-
     
     }
 
+    const setReceipeIndex = (id) => {
+        console.log("It's Inside!!!",id)
+        setReceipe(id);
+    }
 
     return (
-        <div className="search-results">   
         <ul className="results">
             {console.log("RecData :: "+recData)}
             
-                {recData.lenght  != 0 && recData.map((recipeData, index) => (
+                {recData.lenght != 0 && recData.map((recipeData, index) => (
                     <>
                     {/* {console.log("rcData :: "+recipeData)} */}
                     {/* {console.log("indVal :: "+recipeData.index)} */}
 
+                    {index < 10 && 
+
                 
                     <li className="preview" key={index}>
-                    <a className="preview__link preview__link--active" href="#23456">
+                    <a className="preview__link preview__link--active" onClick={() => setReceipeIndex(recipeData.id)} href="#23456" >
                         <figure className="preview__fig">
                         <img src={recipeData.image_url} alt="Test" />
                         </figure>
@@ -86,12 +90,11 @@ const SerachResult = ({searchInput, dtLen}) => {
                         </div>
                     </a>
                     </li>
+                    }
                 </>)
 
                 )}
         </ul>
-        </div>
-
     )
 
 }

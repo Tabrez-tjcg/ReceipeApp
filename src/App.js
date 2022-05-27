@@ -12,6 +12,8 @@ function App(props) {
   const [searchInput, setSearchInput] = useState ('');
   const [flag, setFlag] = useState(false);
   const [dataLength, setDataLength] = useState(0);
+  const [currentReceipe, setCurrentReceipe] = useState('');
+
   const SearchString = (searchInp) => {
     setSearchInput(searchInp);
     console.log("APP Data :: ",searchInput);
@@ -21,6 +23,10 @@ function App(props) {
     setDataLength(l);
   }
 
+  const setReceipe = (setReceipe) => {
+    setCurrentReceipe(setReceipe);
+    console.log("App index",currentReceipe);
+  }
   
   
   return (
@@ -30,13 +36,13 @@ function App(props) {
     <ResultSide 
       searchInput={searchInput}
       setFlag={setFlag}
-      dtLen={dtLen} />
+      dtLen={dtLen}
+      setReceipe={setReceipe} />
 
-    <Receipe searchInput={searchInput} flag={flag} dataLength={dataLength} />
+    <Receipe searchInput={searchInput} flag={flag} dataLength={dataLength} currentReceipe={currentReceipe} />
     
     <div className="overlay hidden" />
 
-    
     <Modal
     className="modal"
     appElement={document.getElementById('app')}
